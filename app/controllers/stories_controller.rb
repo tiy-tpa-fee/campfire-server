@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_user, only: [:index, :create, :update, :destroy]
   before_action :set_story, only: [:show, :update, :destroy]
 
   # GET /stories
