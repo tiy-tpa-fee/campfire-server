@@ -16,8 +16,7 @@ class StoriesController < ApplicationController
 
   # POST /stories
   def create
-    @story = Story.new(story_params)
-    @story.user = current_user
+    @story = current_user.stories.new(story_params)
 
     if @story.save
       render json: @story, status: :created, location: @story
@@ -48,6 +47,6 @@ class StoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def story_params
-      params.require(:story).permit(:title, :description, :kind, :thumbnail_url, :image_url)
+      params.require(:story).permit(:url, :tag_list, :primary_tag)
     end
 end

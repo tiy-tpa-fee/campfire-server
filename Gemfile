@@ -6,12 +6,10 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.5'
-
 gem 'rack-cors'
 gem 'knock', '~> 2.0'
 gem 'http'
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug', platform: :mri

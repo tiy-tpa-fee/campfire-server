@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Primary Tags
+Tag.create([
+  {
+    name: "frontend",
+    is_primary: true
+  },
+  {
+    name: "backend",
+    is_primary: true
+  },
+  {
+    name: "gadgets",
+    is_primary: true
+  },
+  {
+    name: "humor",
+    is_primary: true
+  },
+  {
+    name: "programming",
+    is_primary: true
+  }
+])

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  has_many :stories
   after_create :update_profile
 
   def self.authenticate token
