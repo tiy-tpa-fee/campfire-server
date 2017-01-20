@@ -7,25 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Primary Tags
-Tag.create([
-  {
-    name: "frontend",
-    is_primary: true
-  },
-  {
-    name: "backend",
-    is_primary: true
-  },
-  {
-    name: "gadgets",
-    is_primary: true
-  },
-  {
-    name: "humor",
-    is_primary: true
-  },
-  {
-    name: "programming",
-    is_primary: true
+Tag.create(
+  %w[
+    tech politics business entertainment
+    world socialmedia lifestyle
+  ].map { |tag|
+    { name: tag, is_primary: true }
   }
-])
+)
