@@ -2,9 +2,16 @@ class StoriesController < ApplicationController
   before_action :authenticate_user, only: [:create, :update, :destroy]
   before_action :set_story, only: [:show, :update, :destroy]
 
+  has_scope :featured, type: :boolean
+  has_scope :per
+  has_scope :tag
+  has_scope :page do |controller, scope, value|
+    scope.page(value || 1, controller.params[:per])
+  end
+
   # GET /stories
   def index
-    @stories = Story.all
+    @stories = apply_scopes(Story).all
 
     render json: @stories
   end

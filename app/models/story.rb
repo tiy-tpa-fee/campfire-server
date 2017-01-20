@@ -4,14 +4,10 @@ class Story < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
 
-  def self.tagged_with(name)
-    Tag.find_by_name!(name).articles
-  end
-
-  def self.tag_counts
-    Tag.select("tags.*, count(taggings.tag_id) as count").
-      joins(:taggings).group("taggings.tag_id")
-  end
+  scope :featured, -> { where(is_featured: true) }
+  scope :per, -> p { limit(p) }
+  scope :page, -> p, pp { limit(pp.to_i).offset(pp.to_i * p.to_i) }
+  scope :tag, -> tag { joins(:tags).merge(Tag.where(name: tag)).distinct }
 
   def tag_list
     tags.map(&:name).join(" ")
